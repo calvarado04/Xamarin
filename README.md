@@ -1,4 +1,5 @@
 # Xamarin
+<<<<<<< HEAD
 
 Bienvenido a la asignatura de Programación de Dispositivos Móviles
 
@@ -17,3 +18,6 @@ b) Después tendrás que crear una cuenta en Github (http://github.com). Github 
 Las actividades de programación están en la siguiente dirección web de Github https://github.com/tiempor3al/Xamarin. Ahí también encontraras más información acerca de la configuración de Xamarin Studio con tu cuenta de Github.
 
 Usaremos el libro de de referencia “Creating Mobile Apps with Xamarin.Forms” el cual puedes obtener de http://developer.xamarin.com/guides/cross-platform/xamarin-forms/creating-mobile-apps-xamarin-forms/
+=======
+Repositorio Xamarin materia de programación en dispositivos móviles
+>>>>>>> fd1cd326fa1ee377742dd127148ec2ee4b4ff682

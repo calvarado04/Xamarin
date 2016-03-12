@@ -9,7 +9,8 @@ namespace HolaMundo
 		{	
 			return new ContentPage { 
 				Content = new Label {
-					Text = "Carlos Alvarado Martínez, Número de cuenta: 304045046",
+					Text = "Carlos Alvarado Martínez, " +
+						"Número de cuenta: 304045046",
 					VerticalOptions = LayoutOptions.CenterAndExpand,
 					HorizontalOptions = LayoutOptions.CenterAndExpand,
 				},
