@@ -40,12 +40,13 @@ namespace Actividad4
 
 				//Esta es la llamada al servidor. GetStringAsync nos devuelve una cadena con la respuesta del servidor.
 				//Como este es un servidor de pruebas, no tiene un dominio, solo una ip.
-				var response = await client.GetStringAsync("http://212.47.237.211");
+				// Le cambié la IP a un servidor de la UNAM (en él hice mi servicio social)
+				var response = await client.GetStringAsync("http://132.248.18.182");
 
 				//Imprimimos en pantalla la respuesta del servidor
 				//Los parametros son: titulo, mensaje, y el texto de los botones. En este caso solo tenemos un boton OK.
-				await contentPage.DisplayAlert("Respuesta del servidor",response, "OK");
-
+				//Le faltaba la otra respuesta del servidor, en este caso NULL porque no se requiere otra.
+				await contentPage.DisplayAlert("Respuesta del servidor",response, "OK", null);
 			};
 
 			return contentPage;
