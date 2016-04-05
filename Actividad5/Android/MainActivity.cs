@@ -23,6 +23,7 @@ namespace Actividad5.Android
 			Xamarin.Forms.Forms.Init (this, bundle);
 
 			SetPage (App.GetMainPage ());
+
 		}
 	}
 }
