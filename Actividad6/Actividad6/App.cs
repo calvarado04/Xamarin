@@ -1,14 +1,25 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Net.Http;
+using System.Collections.Generic;
 
 namespace Actividad6
 {
-	public class App
+	public class App : Application
 	{
+
+		public App ()
+		{
+			MainPage = GetMainPage ();
+		}
+
 		//Ahora regresamos una pagina de tipo NavigationPage para navegar entre pantallas
 		public static NavigationPage GetMainPage ()
 		{	
+
+			var usuario = new Entry { Placeholder = "Usuario" };
+
+			var password = new Entry { Placeholder = "Password", IsPassword = true };
 			//Creamos un boton con fondo verde y texto blanco
 			Button btnLogin = new Button {
 				Text = "Login",
@@ -26,7 +37,19 @@ namespace Actividad6
 				VerticalOptions = LayoutOptions.Center,
 				//Agregamos el boton
 				Children = {
-					btnLogin
+					new Label
+					{
+						Text = "Probar conexión a Fedomex.xyz",
+						TextColor = Color.Silver
+					},
+					usuario,
+					password,
+					btnLogin,
+					new Label
+					{
+						Text = "Actividad 6 Carlos Alvarado Martínez",
+						TextColor = Color.Silver
+					}
 				}
 			};
 
@@ -35,24 +58,33 @@ namespace Actividad6
 			//Si se hiciera de manera sincrona, se bloquearia el hilo de ejecucion actual
 			//y se notaria un efecto de pantalla "pasmada".
 			btnLogin.Clicked += async (object sender, EventArgs e) => {
-				//Creamos un nuevo objeto para hacer la llamada remota
-				var client = new HttpClient();
+				string url = "http://fedomex.xyz/Tienda-en-Linea/login.html";
+				string result = String.Empty;
 
-				//Esta es la llamada al servidor. GetStringAsync nos devuelve una cadena con la respuesta del servidor.
-				//Como este es un servidor de pruebas, no tiene un dominio, solo una ip.
-				var response = await client.GetStringAsync("http://212.47.237.211");
+				using (var client = new HttpClient()) {
+					var content = new FormUrlEncodedContent(new[] {
+						new KeyValuePair<string, string>("username", usuario.Text),
+						new KeyValuePair<string, string>("password", password.Text)
+					});
 
-				//Imprimimos en pantalla la respuesta del servidor
-				//Los parametros son: titulo, mensaje, y el texto de los botones. En este caso solo tenemos un boton OK.
-				await contentPage.DisplayAlert("Respuesta del servidor",response, "OK");
+					using (var response = await client.PostAsync(url, content)) {
+						using (var responseContent = response.Content) {
+							result = await responseContent.ReadAsStringAsync();
 
-				var todoPage = new NewPage(); // so the new page shows correct data
-				await contentPage.Navigation.PushAsync(todoPage);
+							if (result.Contains("Bienvenido de nuevo")) {
+								result = "Sí";
+							}
+							else {
+								result = "No";
+							}
+						}
+					}
+
+
+					await contentPage.DisplayAlert("Respuesta del servidor",result, "OK");
+				}
 
 			};
-
-			//Aqui regresamos un NavigationPage
-			//Para ver los tipos que se pueden crear, https://developer.xamarin.com/guides/xamarin-forms/controls/pages/
 			return new NavigationPage(contentPage);
 		}
 	}

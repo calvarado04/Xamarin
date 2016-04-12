@@ -14,16 +14,15 @@ using Xamarin.Forms.Platform.Android;
 namespace Actividad6.Android
 {
 	[Activity (Label = "Actividad6.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : AndroidActivity
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			Xamarin.Forms.Forms.Init (this, bundle);
+			global::Xamarin.Forms.Forms.Init (this, bundle);
 
-			SetPage (App.GetMainPage ());
+			LoadApplication (new App ()); 
 		}
 	}
 }
-
