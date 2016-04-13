@@ -9,7 +9,8 @@ namespace Actividad7
 		{
 			Label texto = new Label {
 				Text = "Página 1",
-				TextColor = Color.Blue
+				TextColor = Color.White,
+				FontSize  = 22
 			};
 
 			Button boton = new Button
@@ -35,7 +36,10 @@ namespace Actividad7
 			//Como esta clase hereda de ContentPage, podemos usar estas propiedades directamente
 			this.Content = stackLayout;
 			this.Padding = new Thickness (5, Device.OnPlatform (20, 5, 5), 5, 5);
+							
 		}
+
+
 	}
 }
 

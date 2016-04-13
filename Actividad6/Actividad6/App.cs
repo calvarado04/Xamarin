@@ -28,7 +28,7 @@ namespace Actividad6
 			};
 
 			ContentPage contentPage = new ContentPage();
-		
+
 			//Stacklayout permite agregar controles verticalmente
 			//Por el momento solo tenemos un control que es el boton
 			contentPage.Content = new StackLayout {
@@ -61,7 +61,7 @@ namespace Actividad6
 			//Se obtiene la cadena de respuesta del servidor, que se comparará para determinar
 			//si la conexión fue aceptada o fue rechazada por el servidor
 			btnLogin.Clicked += async (object sender, EventArgs e) => {
-				
+
 				//URL de la página de login de Fedomex
 				string url = "http://fedomex.xyz/Tienda-en-Linea/login.html";
 				string result = String.Empty;
@@ -84,7 +84,7 @@ namespace Actividad6
 								result = "Sí";
 
 								//Botón de regreso en el nuevo StackLayout
-								 Button btnBack = new Button {
+								Button btnBack = new Button {
 									Text = "Regresar",
 									TextColor = Color.White,
 									BackgroundColor = Color.FromHex ("77D065")
@@ -116,8 +116,8 @@ namespace Actividad6
 									contentPage.Navigation.PushModalAsync(GetMainPage ());;
 								};
 
-									
-							
+
+
 							}
 
 							//La parte else del IF STATEMENT
@@ -138,4 +138,3 @@ namespace Actividad6
 		}
 	}
 }
-

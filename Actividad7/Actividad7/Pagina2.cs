@@ -9,7 +9,8 @@ namespace Actividad7
 		{
 			Label texto = new Label {
 				Text = "Página 2",
-				TextColor = Color.Green
+				TextColor = Color.Green,
+				FontSize  = 22
 			};
 
 			//Stacklayout permite apilar los controles verticalmente
