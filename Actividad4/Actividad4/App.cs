@@ -1,7 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
-
 using System.Net.Http;
+
+//Carlos Alvarado Martínez
+//Actividad 4 Programación de Dispositivos Móviles
 
 namespace Actividad4
 {
@@ -26,12 +28,22 @@ namespace Actividad4
 				VerticalOptions = LayoutOptions.Center,
 				//Agregamos el boton
 				Children = {
-					btnLogin
+					new Label
+					{
+						Text = "Muestra el contenido de http://104.42.52.205",
+						TextColor = Color.Silver
+					},
+					btnLogin,
+					new Label
+					{
+						Text = "Actividad 4 Carlos Alvarado Martínez",
+						TextColor = Color.Silver
+					}
 				}
 			};
 
 			//Cuando se de click al boton, se ejecuta la llamada remota al servidor
-			//Async indica que la llamada se hace de manera asyncrona. 
+			//Async indica que la llamada se hace de manera asincrona. 
 			//Si se hiciera de manera sincrona, se bloquearia el hilo de ejecucion actual
 			//y se notaria un efecto de pantalla "pasmada".
 			btnLogin.Clicked += async (object sender, EventArgs e) => {
@@ -40,8 +52,7 @@ namespace Actividad4
 
 				//Esta es la llamada al servidor. GetStringAsync nos devuelve una cadena con la respuesta del servidor.
 				//Como este es un servidor de pruebas, no tiene un dominio, solo una ip.
-				// Le cambié la IP a un servidor de la UNAM (en él hice mi servicio social)
-				var response = await client.GetStringAsync("http://132.248.18.182");
+				var response = await client.GetStringAsync("http://104.42.52.205");
 
 				//Imprimimos en pantalla la respuesta del servidor
 				//Los parametros son: titulo, mensaje, y el texto de los botones. En este caso solo tenemos un boton OK.
