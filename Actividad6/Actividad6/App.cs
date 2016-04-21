@@ -2,9 +2,20 @@
 using Xamarin.Forms;
 using System.Net.Http;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+
+//Carlos Alvarado Martínez
+//Actividad 6 Programación de Dispositivos Móviles
 
 namespace Actividad6
 {
+
+	//Clase Status que servirá para el json que se recibe de la URL
+	public class Status {
+		public string status { get; set; } 
+	}
+
+	//La clase App que es la base del programa
 	public class App : Application
 	{
 
@@ -14,6 +25,8 @@ namespace Actividad6
 		}
 
 		public static INavigation Navigation { get; private set; }
+
+
 		public static Page GetMainPage() 
 		{	
 
@@ -40,7 +53,7 @@ namespace Actividad6
 				Children = {
 					new Label
 					{
-						Text = "Probar conexión a Fedomex.xyz",
+						Text = "Probar conexión a 104.42.52.205/mobile/login",
 						TextColor = Color.Silver,
 						FontSize = 22
 					},
@@ -56,20 +69,20 @@ namespace Actividad6
 				}
 			};
 
-			//Cuando se le da clic al boton de Login, la aplicación se conectará a Fedomex.xyz
+			//Cuando se le da clic al boton de Login, la aplicación se conectará a 104.42.52.205/mobile/login
 			//Pasando como argumento de usuario y contraseña lo que se haya introducido
 			//Se obtiene la cadena de respuesta del servidor, que se comparará para determinar
 			//si la conexión fue aceptada o fue rechazada por el servidor
 			btnLogin.Clicked += async (object sender, EventArgs e) => {
 
 				//URL de la página de login de Fedomex
-				string url = "http://fedomex.xyz/Tienda-en-Linea/login.html";
+				string url = @"http://104.42.52.205/mobile/login";
 				string result = String.Empty;
 
 				//Se usa el HttpClient
 				using (var client = new HttpClient()) {
 					var content = new FormUrlEncodedContent(new[] {
-						new KeyValuePair<string, string>("username", usuario.Text),
+						new KeyValuePair<string, string>("user", usuario.Text),
 						new KeyValuePair<string, string>("password", password.Text)
 					});
 
@@ -78,9 +91,18 @@ namespace Actividad6
 						using (var responseContent = response.Content) {
 							result = await responseContent.ReadAsStringAsync();
 
+							//Declaramos el statusobj que es un objeto de clase Status
+							Status statusobj = new Status();
+
+							//Poblamos el objeto result con el json obtenido de la página web
+							JsonConvert.PopulateObject(result, statusobj);
+
+							//Asignamos el método status del objeto result de tipo Status a la variable resultado
+							string resultado = statusobj.status;
+
 							//IF Statement, si en la cadena que se obtuvo aparece Bienvenido de nuevo,
 							//Se cambia al nuevo StackLayout y si no, no regresa a la pantalla principal
-							if (result.Contains("Bienvenido de nuevo")) {
+							if (resultado.Contains("ok")) {
 								result = "Sí";
 
 								//Botón de regreso en el nuevo StackLayout
@@ -97,7 +119,7 @@ namespace Actividad6
 									Children = {
 										new Label
 										{
-											Text = "¡La conexión a Fedomex.xyz fue exitosa!",
+											Text = "¡La conexión a 104.42.52.205/mobile/login fue exitosa!",
 											TextColor = Color.Silver, 
 											FontSize = 22
 										},
