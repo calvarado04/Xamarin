@@ -14,7 +14,7 @@ using Xamarin.Forms.Platform.Android;
 namespace Actividad8.Android
 {
 	[Activity (Label = "Actividad8.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : AndroidActivity
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -22,7 +22,7 @@ namespace Actividad8.Android
 
 			Xamarin.Forms.Forms.Init (this, bundle);
 
-			SetPage (App.GetMainPage ());
+			LoadApplication (new App ()); 
 		}
 	}
 }

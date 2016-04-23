@@ -1,14 +1,20 @@
 ﻿using System;
 using Xamarin.Forms;
 
+//Carlos Alvarado Martínez
+//Actividad 8 Programación de Dispositivos Móviles
+
 namespace Actividad8
 {
-	public class App
+	
+	public class App : Application
 	{
-		public static Page GetMainPage ()
+		
+		public App ()
 		{	
-			return new NavigationPage (new Login());
+			//Abrimos el GetMainPage de la página Carrusel
+			MainPage = Carrusel.GetMainPage();
+
 		}
 	}
 }
-

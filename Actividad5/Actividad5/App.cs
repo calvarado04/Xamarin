@@ -7,19 +7,18 @@ using Newtonsoft.Json;
 //Carlos Alvarado Martínez
 //Actividad 5 Programación de Dispositivos Móviles
 
-namespace Actividad5
-{
+namespace Actividad5 {
 	//Clase Status que servirá para el json que se recibe de la URL
 	public class Status {
+		
 		public string status { get; set; } 
+
 	}
 
 	//La clase App que es la base del programa
-	public class App
-	{
+	public class App {
 			
-			public static Page GetMainPage ()
-			{	
+			public static Page GetMainPage () {	
 
 				var usuario = new Entry { Placeholder = "Usuario" };
 				
@@ -33,7 +32,9 @@ namespace Actividad5
 
 				//El StackLayout de la aplicación
 				StackLayout stackLayout = new StackLayout {
+				
 					Children = {
+					
 						new Label
 						{
 						Text = "Conectarse a 104.42.52.205/mobile/login",
@@ -47,6 +48,7 @@ namespace Actividad5
 							Text = "Actividad 5 Carlos Alvarado Martínez",
 							TextColor = Color.Silver
 						}
+
 					}
 				};
 					
@@ -57,16 +59,21 @@ namespace Actividad5
 
 				//La URL a la que nos conectaremos
 				string url = @"http://104.42.52.205/mobile/login";
+
 				string vstatuscode = String.Empty;
 
 				//El HttpClient que se usará 
 				using (var client = new HttpClient()) {
+					
 					var content = new FormUrlEncodedContent(new[] {
+						
 						new KeyValuePair<string, string>("user", usuario.Text),
 						new KeyValuePair<string, string>("password", password.Text)
+
 					});
 						
 					using (var response = await client.PostAsync(url, content)) {
+						
 						using (var responseContent = response.Content) {
 
 							//Obtenemos la cadena de respuesta del servidor en formato json
