@@ -5,10 +5,10 @@ using System.Collections.Generic;
 namespace Actividad8
 {
 	
-	public class Carrusel : ContentPage
+	public class PaginaCarrusel : ContentPage
 	{
 		
-		public static Page GetMainPage ()
+		public Page Carrusel  ()
 		{	
 
 			List<ContentPage> pages = new List<ContentPage> (){
@@ -56,8 +56,6 @@ namespace Actividad8
 					Content = new StackLayout {
 
 						Orientation = StackOrientation.Vertical,
-						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						VerticalOptions = LayoutOptions.CenterAndExpand,
 						BackgroundColor = colors[i],
 
 						Children = {
