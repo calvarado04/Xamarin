@@ -40,13 +40,15 @@ namespace Actividad8
 			var foto6 = new Image { Aspect = Aspect.AspectFit };
 			foto6.Source = ImageSource.FromUri(uri6);
 
-
 			//Arreglo que contiene las fotos remotas de tipo Image
 			Image[] fotos = { foto1, foto2, foto3, foto4, foto5, foto6 };
 
-			//Ciclo for que genera cada página del carrusel
-			foreach (Image f in fotos) {
-				
+			//Arreglo que contiene los colores que se usarán como fondo de cada página del carrusel
+			Color[] colors = { Color.Red, Color.Green, Color.Blue, Color.Purple, Color.Silver, Color.Teal };
+
+			//Ciclo for que genera cada página del carrusel usando los dos arreglos anteriores
+			for (int i = 0; i < 6; i++) {
+							
 				pages.Add (new ContentPage { 
 
 					Padding = new Thickness (5, Device.OnPlatform (20, 5, 5), 5, 5),
@@ -56,29 +58,25 @@ namespace Actividad8
 						Orientation = StackOrientation.Vertical,
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
+						BackgroundColor = colors[i],
 
 						Children = {
-							new Label
-							{
+							new Label {
 								Text = "Actividad 8 - Carrusel de fotos remotas",
-								TextColor = Color.Silver, 
+								TextColor = Color.White, 
 								VerticalOptions = LayoutOptions.StartAndExpand,
 								FontSize = 18
 							},
-							f,
-							new Label
-							{
+							fotos[i],
+							new Label {
 								Text = "Alumno: Carlos Alvarado Martínez",
-								TextColor = Color.Silver, 
+								TextColor = Color.White, 
 								VerticalOptions = LayoutOptions.EndAndExpand,
 								FontSize = 18
 							}
 						}
 					}
-
-
 				});
-
 			};
 
 			//Retorno del carrusel creado
