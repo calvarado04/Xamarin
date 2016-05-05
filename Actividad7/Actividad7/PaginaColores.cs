@@ -2,22 +2,22 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 
-
 namespace Actividad7
 {
-	public class PaginaColores: ContentPage
+	public class PaginaColores : ContentPage
 	{
 
-		public static Page GetMainPage() 
-		{	
+		public Page Colores ()
+		{
+			
 			//Creamos una lista de paginas de tipo ContentPage. 
 			//Hasta ahora nuestra lista no tiene ningun elemento
 			List<ContentPage> pages = new List<ContentPage> (){
 
 			};
-
-			//Creamos un arreglo de colores con 6 elementos, Red, Green, Blue, Yellow, Silver y White
-			Color[] colors = { Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Silver, Color.Teal };
+				
+			//Creamos un arreglo de colores con 6 elementos, Red, Green, Blue, Purple, Silver y White
+			Color[] colors = { Color.Red, Color.Green, Color.Blue, Color.Purple, Color.Silver, Color.Teal };
 
 			//Por cada color agregamos un nuevo objeto de tipo ContentPage a la lista
 			foreach (Color c in colors) {
@@ -26,8 +26,6 @@ namespace Actividad7
 
 					Padding = new Thickness (0, Device.OnPlatform (40, 40, 0), 0, 0),
 					Content = new StackLayout {
-
-
 
 
 						//Cada pagina tiene como elementos un BoxView (un rectángulo) con 
@@ -43,9 +41,9 @@ namespace Actividad7
 				});
 
 			}
-
+				
 			//Agregamos las páginas al carouselPage
-			return new CarouselPage {
+			CarouselPage carrusel = new CarouselPage {
 				Children = { pages [0],
 					pages [1],
 					pages [2],
@@ -55,8 +53,9 @@ namespace Actividad7
 
 				}
 			};
+					
+			return carrusel;
+
 		}
-
-
 	}
 }
