@@ -72,43 +72,44 @@ namespace Actividad7
 			btnLogin.Clicked += async (object sender, EventArgs e) => {
 
 				//URL de la página de login de Fedomex
-				string url = "http://fedomex.xyz/Tienda-en-Linea/login.html";
-				string result = String.Empty;
+				string url = @"http://fedomex.xyz/MobileFCA/login";
+				string vstatuscode = String.Empty;
+				string resultado;
 
 				//Se usa el HttpClient
 				using (var client = new HttpClient ()) {
 					var content = new FormUrlEncodedContent (new[] {
-						new KeyValuePair<string, string> ("username", usuario.Text),
+						new KeyValuePair<string, string> ("user", usuario.Text),
 						new KeyValuePair<string, string> ("password", password.Text)
 					});
 
-					//Se espera la respuesta del servidor y se guarda en un string
-					using (var response = await client.PostAsync (url, content)) {
-						using (var responseContent = response.Content) {
-							result = await responseContent.ReadAsStringAsync ();
 
-							//IF Statement, si en la cadena que se obtuvo aparece Bienvenido de nuevo,
-							//Se cambia al nuevo StackLayout y si no, no regresa a la pantalla principal
-							if (result.Contains ("Bienvenido de nuevo")) {
-								result = "Sí";
+					using (var response = await client.PostAsync(url, content)) {
+
+						using (var responseContent = response.Content) {
+
+							vstatuscode = await responseContent.ReadAsStringAsync();
+
+							Status result = new Status();
+
+							JsonConvert.PopulateObject(vstatuscode, result);
+
+							resultado = result.status;
+
+							if ( resultado == "ok" ) {
 
 								PaginaColores colors = new PaginaColores();
 
-								//Generamos una nueva página de navegación de la Pagina de Colores
+								//Generamos una nueva página de navegación NewPage
 								var todoPage = colors.Colores();
-								await contentPage.Navigation.PushAsync(todoPage);
+								await contentPage.Navigation.PushAsync (todoPage);
 
-							}
-
-							//La parte else del IF STATEMENT
-							else {
-								result = "No";
 							}
 						}
 					}
 
 					//Muestra el display Alert requerido, tanto para sí o para no	
-					await contentPage.DisplayAlert ("Respuesta del servidor", result, "OK");
+					await contentPage.DisplayAlert ("Respuesta del servidor", resultado, "OK");
 				}
 
 			};
