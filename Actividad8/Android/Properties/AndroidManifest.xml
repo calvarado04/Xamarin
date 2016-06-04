@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="Actividad8.Android">
-	<uses-sdk />
-	<application android:label="Actividad8.Android" android:icon="@drawable/unam"></application>
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+	<uses-permission android:name="android.permission.INJECT_EVENTS" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.DUMP" />
+	<application android:label="Actividad8" android:icon="@drawable/unam"></application>
 </manifest>

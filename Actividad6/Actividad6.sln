@@ -5,7 +5,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Actividad6", "Actividad6\Ac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actividad6.iOS", "iOS\Actividad6.iOS.csproj", "{57B2111F-3756-4A15-97B7-28FCCBBF31E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actividad6.Android", "Android\Actividad6.Android.csproj", "{12E2CA83-B5E5-4FDF-8608-4E93AA1F36B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actividad6", "Android\Actividad6.csproj", "{12E2CA83-B5E5-4FDF-8608-4E93AA1F36B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

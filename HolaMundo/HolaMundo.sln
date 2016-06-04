@@ -5,7 +5,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolaMundo", "HolaMundo\Hola
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaMundo.iOS", "iOS\HolaMundo.iOS.csproj", "{5E14F936-61F2-4825-B11E-5D6F717ADCCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaMundo.Android", "Android\HolaMundo.Android.csproj", "{2A8D221C-EDF2-435F-8F21-4176E59AC71B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaMundo", "Android\HolaMundo.csproj", "{2A8D221C-EDF2-435F-8F21-4176E59AC71B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

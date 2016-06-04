@@ -30,7 +30,7 @@ namespace Actividad4
 				Children = {
 					new Label
 					{
-						Text = "Muestra el contenido de http://104.42.52.205",
+						Text = "Muestra el contenido de http://fedomex.xyz",
 						TextColor = Color.Silver
 					},
 					btnLogin,
@@ -51,8 +51,7 @@ namespace Actividad4
 				var client = new HttpClient();
 
 				//Esta es la llamada al servidor. GetStringAsync nos devuelve una cadena con la respuesta del servidor.
-				//Como este es un servidor de pruebas, no tiene un dominio, solo una ip.
-				var response = await client.GetStringAsync("http://104.42.52.205");
+				var response = await client.GetStringAsync("http://fedomex.xyz");
 
 				//Imprimimos en pantalla la respuesta del servidor
 				//Los parametros son: titulo, mensaje, y el texto de los botones. En este caso solo tenemos un boton OK.

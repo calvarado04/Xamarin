@@ -37,7 +37,7 @@ namespace Actividad5 {
 					
 						new Label
 						{
-						Text = "Conectarse a 104.42.52.205/mobile/login",
+						Text = "Conectarse a fedomex.xyz/MobileFCA/login",
 							TextColor = Color.White
 						},
 						usuario,
@@ -58,7 +58,7 @@ namespace Actividad5 {
 				login.Clicked += async (object sender, EventArgs e) => {
 
 				//La URL a la que nos conectaremos
-				string url = @"http://104.42.52.205/mobile/login";
+				string url = @"http://fedomex.xyz/MobileFCA/login";
 
 				string vstatuscode = String.Empty;
 
